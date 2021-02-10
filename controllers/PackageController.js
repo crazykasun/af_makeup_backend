@@ -47,3 +47,63 @@ exports.create = (req, res) => {
         });
     });
 };
+
+exports.getImage = (req, res, next) => {
+    if(req.pack.image.data){
+        res.set('Content-Type', req.pack.image.contentType);
+        return res.send(req.pack.image.data);
+    }
+
+    next();
+};
+
+exports.getPackageById = (req, res, next, id) => {
+    Package.findById(id).exec((err, pack) => {
+        if(err || !pack){
+            return res.status(400).json({
+                error: "Package could not be found"
+            });
+        }
+
+        req.pack = pack;
+        next();
+    });
+};
+
+exports.getAllPackages = (req, res) => {
+    let orderBy = req.query.orderBy ? req.query.orderBy:'ASC';
+    let sortBy = req.query.sortBy ? req.query.sortBy:'_id';
+
+    Package.find()
+        .select("-image")
+        .sort([[sortBy, orderBy]])
+        .exec((err, data) => {
+            if(err){
+                res.status(400).json({
+                    error: 'Packages not found!'
+                });
+            }
+
+            res.json(data);
+        });
+};
+
+exports.read = (req, res) => {
+    req.pack.image = undefined;
+    return res.json(req.pack);
+};
+
+exports.updatePackage = (req, res) => {
+    Package.findOneAndUpdate({_id: req.pack._id}, { $set: {quantity: req.body.quantity}}, {upsert: false}, (err, user) => {
+        if (err) {
+            return res.status(400).json({
+                error: 'Unauthorized Action!'
+            })
+        }
+
+        user.hashed_password = undefined;
+        user.salt = undefined;
+
+        res.json(user);
+    });
+};

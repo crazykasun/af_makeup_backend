@@ -29,7 +29,7 @@ const packageSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    sold: {
+    amount: {
         type: Number,
         default: 0
     },

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const crypto = require('crypto');
-const { v1: uuidv1 } = require("uuid");
+const {v1: uuidv1} = require("uuid");
 const {ObjectId} = mongoose.Schema;
 
 const userSchema = new mongoose.Schema({
@@ -27,6 +27,16 @@ const userSchema = new mongoose.Schema({
             type: Number,
             default: 0
         },
+        pack: [{
+            pack: {
+                type: ObjectId,
+                ref: 'Package',
+                required: false
+            },
+            total: {
+                type: Number
+            }
+        }],
         hashed_password: {
             type: String,
             required: true
@@ -47,7 +57,7 @@ userSchema.virtual('password')
     });
 
 userSchema.methods = {
-    authenticate: function(plainPass) {
+    authenticate: function (plainPass) {
         return this.encryptPassword(plainPass) === this.hashed_password;
     },
 

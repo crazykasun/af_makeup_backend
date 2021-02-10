@@ -49,16 +49,69 @@ exports.signOut = (req, res) => {
 };
 
 exports.getUserById = (req, res, next, id) => {
-    User.findById(id).exec((err, user) => {
+    console.log(id);
+    User.findById(id).populate('pack.pack').exec((err, user) => {
         if (err || !user) {
             res.status(400).json({
                 error: 'User not found!'
             });
         }
 
+        console.log(user);
         req.profile = user;
         next();
     });
+};
+
+//method to update users using requests
+exports.updateUserDetails = (req, res) => {
+    let updateSet = {$set: {}, $addToSet: {}};
+
+    if (req.body.name != null) {
+        updateSet.$set.name = req.body.name
+    }
+    if (req.body.phone != null) {
+        updateSet.$set.phone = req.body.phone
+    }
+    if (req.body.email != null) {
+        updateSet.$set.email = req.body.email
+    }
+    if (req.body.nic != null) {
+        updateSet.$set.nic = req.body.nic
+    }
+    if (req.body.pack != null) {
+        const packs =  {
+            "pack" : req.body.pack.pack,
+            "total" : req.body.pack.total
+        };
+        updateSet.$addToSet.pack = packs
+    }
+
+    console.log('Hi')
+    console.log(req.body.pack.pack)
+
+    //update user doc using user id
+    User.findOneAndUpdate({_id: req.profile._id}, updateSet, {new: true}, (err, user) => {
+        if (err) {
+            return res.status(400).json({
+                error: 'Unauthorized Action!'
+            })
+        }
+
+        user.hashed_password = undefined;
+        user.salt = undefined;
+
+        res.json(user);
+    });
+};
+
+//function read user details
+exports.getUserDetails = (req, res) => {
+    console.log(req.profile);
+    req.profile.hashed_password = undefined;
+    req.profile.salt = undefined;
+
+    return res.json(req.profile);   //get entire profile
 };
 
 exports.requiredSignIn = expressJwt({
