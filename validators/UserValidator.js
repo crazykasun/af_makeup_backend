@@ -33,3 +33,17 @@ exports.requiredSignIn = expressJwt({
     secret: process.env.JWT_SECRET,
     userProperty: "auth"
 });
+
+exports.isAdmin = (req, res, next) => {
+    if(req.body.role !== 1)
+        return res.status(403).json({error: "Access Denied!"});
+
+    next();
+};
+
+exports.isAdmin1 = (req, res, next) => {
+    if(req.profile.role !== 1)
+        return res.status(403).json({error: "Access Denied!"});
+
+    next();
+};

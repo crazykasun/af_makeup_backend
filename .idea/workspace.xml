@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="491d5bfa-a62b-4203-bcb2-fea677d5f5b7" name="Default Changelist" comment="" />
+    <list default="true" id="491d5bfa-a62b-4203-bcb2-fea677d5f5b7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/controllers/PackageController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/Package.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/PackageRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/UserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/UserController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/UserRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/UserRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/validators/UserValidator.js" beforeDir="false" afterPath="$PROJECT_DIR$/validators/UserValidator.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +25,13 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1oH9yT92pwIGDMyE7t1ysNT3awi" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -36,7 +53,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1612932902764</updated>
-      <workItem from="1612932903841" duration="987000" />
+      <workItem from="1612932903841" duration="8901000" />
     </task>
     <servers />
   </component>
@@ -44,6 +61,14 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="621" y="310" key="Github.ShareDialog" timestamp="1612934215309">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="621" y="310" key="Github.ShareDialog/0.0.1536.824@0.0.1536.824" timestamp="1612934215309" />
+    <state x="541" y="118" key="Github.UntrackedFilesDialog" timestamp="1612934226434">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="541" y="118" key="Github.UntrackedFilesDialog/0.0.1536.824@0.0.1536.824" timestamp="1612934226434" />
     <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1612933235605">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -60,5 +85,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1612933235605" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1612934435850">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1612934435850" />
   </component>
 </project>

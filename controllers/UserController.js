@@ -35,17 +35,30 @@ exports.signIn = (req, res) => {
             })
         }
 
-        const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET);
+        const token = jwt.sign({_id: user._id, role: user.role}, process.env.JWT_SECRET);
         res.cookie('t', token, {expire: new Date() + 9999});
 
-        const {_id, name, email} = user;
-        return res.json({token, user: {_id, name, email}});
+        const {_id, name, email, role} = user;
+        return res.json({token, user: {_id, name, email, role}});
     })
 };
 
 exports.signOut = (req, res) => {
     res.clearCookie('t');
     res.json({message: "Signed Out"});
+};
+
+exports.getUserById = (req, res, next, id) => {
+    User.findById(id).exec((err, user) => {
+        if (err || !user) {
+            res.status(400).json({
+                error: 'User not found!'
+            });
+        }
+
+        req.profile = user;
+        next();
+    });
 };
 
 exports.requiredSignIn = expressJwt({

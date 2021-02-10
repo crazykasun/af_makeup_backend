@@ -11,6 +11,7 @@ require('dotenv').config();
 
 //import routes
 const userRoutes = require('./routes/UserRoutes');
+const packageRoutes = require('./routes/PackageRoutes');
 
 //middleware
 app.use(morgan('dev'));
@@ -21,6 +22,7 @@ app.use(cors());
 
 //routes
 app.use('/api', userRoutes);
+app.use('/api', packageRoutes);
 
 const port = process.env.PORT || 8000;
 
